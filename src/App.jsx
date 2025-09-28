@@ -1,35 +1,94 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import Home from "./pages/home";
+import LoginModal from "./pages/login";
+import styles from "./styles/app.module.css";
+import ProtectedRoute from "./components/protectedRoutes";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthState } from "./redux/auth/authSlice";
+import { observeAuthState } from "./services/authServices";
+
+// Component to conditionally render content based on route
+const RouteContentManager = () => {
+  return (
+    <div className={styles.mainContent}>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <TrainCarousel />
+            </>
+          }
+        />
+        <Route path="/train-search" element={<TrainSearchResults />} />
+        <Route path="/train-details/:train_number" element={<TrainDetails />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation/>} />
+        <Route
+          path="/booking"
+          element={
+            <ProtectedRoute>
+              <BookingPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path="/my-bookings" 
+          element={
+            <ProtectedRoute>
+              <MyBookings />
+            </ProtectedRoute>
+          } 
+        />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route
+          path="/login"
+          element={
+            <LoginModal
+              isOpen={true}
+              onClose={() => window.history.back()}
+              onLogin={() => {}}
+              switchToRegister={() => {}}
+            />
+          }
+        />
+      </Routes>
+    </div>
+  );
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  const { isInitialized } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    observeAuthState((user) => {
+      dispatch(setAuthState(user));
+    });
+  }, [dispatch]);
+
+  if (!isInitialized) {
+    return <>Loading....</>;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className={styles.app}>
+        <Navbar />
+        <RouteContentManager />
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
