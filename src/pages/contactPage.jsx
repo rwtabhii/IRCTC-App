@@ -13,7 +13,7 @@ function ContactPage() {
           </div>
           <div className={styles.contactItem}>
             <h3>Phone Support</h3>
-            <p>+91-9876543210</p>
+            <p>+91-000000000</p>
           </div>
           <div className={styles.contactItem}>
             <h3>Office Hours</h3>

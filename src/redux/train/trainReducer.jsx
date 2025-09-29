@@ -2,17 +2,92 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { enrichTrainDataWithRoute } from "../../utils/trainDataHelper";
 
 const API_URL = 'https://mocki.io/v1/4099cc1c-9657-47c3-bb3f-10c34275e817'
+const dummyData = [
+  {
+    "train_number": "12345",
+    "train_name": "Rajdhani Express",
+    "departure_time": "06:00",
+    "arrival_time": "18:00",
+    "source": "Delhi",
+    "destination": "Mumbai",
+    "days_of_operation": ["Mon","Wed","Fri"],
+    "price": {"1A":3500,"2A":2200,"3A":1500}
+  },
+  {
+    "train_number": "54321",
+    "train_name": "Shatabdi Express",
+    "departure_time": "08:30",
+    "arrival_time": "16:30",
+    "source": "Delhi",
+    "destination": "Chandigarh",
+    "days_of_operation": ["Tue","Thu","Sat"],
+    "price": {"CC":1200,"2S":600}
+  },
+  {
+    "train_number": "67890",
+    "train_name": "Special Superfast",
+    "departure_time": "22:00",
+    "arrival_time": "06:00",
+    "source": "Mumbai",
+    "destination": "Chennai",
+    "days_of_operation": "Daily",
+    "price": {"1A":4000,"2A":2500,"3A":1700,"SL":800}
+  },
+  {
+    "train_number": "11223",
+    "train_name": "Duronto Express",
+    "departure_time": "19:00",
+    "arrival_time": "07:00",
+    "source": "Kolkata",
+    "destination": "Mumbai",
+    "days_of_operation": ["Mon","Thu"],
+    "price": {"1A":3800,"2A":2300,"3A":1600}
+  },
+  {
+    "train_number": "33445",
+    "train_name": "Garib Rath",
+    "departure_time": "05:30",
+    "arrival_time": "21:30",
+    "source": "Delhi",
+    "destination": "Patna",
+    "days_of_operation": ["Tue","Fri","Sun"],
+    "price": {"3A":1400,"SL":500}
+  },
+  {
+    "train_number": "55667",
+    "train_name": "Intercity Express",
+    "departure_time": "07:15",
+    "arrival_time": "12:30",
+    "source": "Bangalore",
+    "destination": "Mysore",
+    "days_of_operation": "Daily",
+    "price": {"CC":800,"2S":300}
+  },
+  {
+    "train_number": "77889",
+    "train_name": "Tejas Express",
+    "departure_time": "06:45",
+    "arrival_time": "13:30",
+    "source": "Mumbai",
+    "destination": "Goa",
+    "days_of_operation": ["Mon","Wed","Sat"],
+    "price": {"CC":1500,"2S":700}
+  }
+]
+
 
 export const fetchTrains = createAsyncThunk(
   "trains/fetchTrains",
   async (_, { rejectWithValue }) => {
-    try {
-      const response = await fetch(API_URL);
-      if(!response.ok){
-        return rejectWithValue(error.message);
-      }
-      const data = await response.json();
-      return data.data;
+    try { //for api use
+      // const response = await fetch(API_URL);
+      // if(!response.ok){
+      //   return rejectWithValue(error.message);
+      // }
+      // const data = await response.json();
+      // for dummyData use
+      const data = dummyData
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
