@@ -7,12 +7,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBe8xj60GONgzLl0GlsWjOjdykmD7XZkn4",
-  authDomain: "irctc-app-bed90.firebaseapp.com",
-  projectId: "irctc-app-bed90",
-  storageBucket: "irctc-app-bed90.firebasestorage.app",
-  messagingSenderId: "501899266707",
-  appId: "1:501899266707:web:7eebaf406d74734d1b5b66"
+your configuration here 
 };
 
 // Initialize Firebase
