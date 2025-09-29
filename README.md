@@ -1,4 +1,4 @@
-**# IRCTC Clone - React + Redux + Firestore**
+** IRCTC Clone - React + Redux + Firestore**
 
 A **train booking and information web application** inspired by IRCTC.  
 This project is built with **React**, **Redux Toolkit**, and **Firebase Firestore** for data storage.  
@@ -6,7 +6,7 @@ It is intended as a **demo/project for learning purposes** (does **not use real 
 
 ---
 
-**## Features**
+** Features**
 
 - **Train Search** – Search trains by source and destination.
 - **Train Schedule Display** – View departure and arrival times.
@@ -18,7 +18,7 @@ It is intended as a **demo/project for learning purposes** (does **not use real 
 
 ---
 
-**## Tech Stack**
+** Tech Stack**
 
 - **Frontend:** React, Redux Toolkit, React Router
 - **Backend / Database:** Firebase Firestore, FirebaseAuth
@@ -29,7 +29,7 @@ It is intended as a **demo/project for learning purposes** (does **not use real 
 
 ---
 
-**## Project Structure**
+** Project Structure**
 
 irctc-clone/
 │
