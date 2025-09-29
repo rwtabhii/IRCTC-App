@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/Navbar.module.css";
 import { FaBell, FaQuestionCircle, FaHome } from "react-icons/fa";
-import LoginModal from "../pages/LoginModal";
-import RegisterModal from "../pages/RegisterModal";
+import LoginModal from "../pages/loginPage";
+import RegisterModal from "../pages/registerPage";
 import {
   openLoginModal,
   openRegisterModal,
   closeModals,
   logoutAsync,
-} from "../redux/auth/authSlice";
+} from "../redux/auth/authReducer";
 
 const Navbar = () => {
   const navigate = useNavigate();

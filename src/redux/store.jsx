@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./auth/authSlice.js";
-import trainReducer from "./train/trainSlice.js";
-import bookingSlice from "./bookings/bookingsSlice.js";
+import authReducer from "./auth/authReducer.jsx";
+import trainReducer from "./train/trainReducer.jsx";
+import bookingSlice from "../redux/booking/bookingReducer.jsx";
 
 const store = configureStore({
   reducer: {

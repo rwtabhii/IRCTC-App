@@ -7,14 +7,21 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
-import Home from "./pages/home";
-import LoginModal from "./pages/login";
+import TrainCarousel from "./components/trainCrousel";
+import TrainDetails from "./pages/trainDetailPage";
+import TrainSearchResults from "./pages/trainSearchResultPage";
+import BookingConfirmation from "./pages/bookConfirmationPage";
+import BookingPage from "./pages/bookingPage";
+import MyBookings from "./pages/myBookingPage";
+import ContactPage from "./pages/contactPage";
+import Home from "./pages/homePage";
+import LoginModal from "./pages/loginPage";
 import styles from "./styles/app.module.css";
 import ProtectedRoute from "./components/protectedRoutes";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuthState } from "./redux/auth/authSlice";
-import { observeAuthState } from "./services/authServices";
+import { setAuthState } from "./redux/auth/authReducer";
+import { observeAuthState } from "./api/authApi";
 
 // Component to conditionally render content based on route
 const RouteContentManager = () => {

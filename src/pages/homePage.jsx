@@ -8,11 +8,11 @@ import {
   FaTrain,
 } from "react-icons/fa";
 import styles from "../styles/Home.module.css";
-import trainImage from "../assets/train1.jpg";
+import trainImage from "../assets/main.jpg";
 import {
   setSearchParams,
   clearAllFiltersAndSearch,
-} from "../redux/train/trainSlice";
+} from "../redux/train/trainReducer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -184,3 +184,4 @@ const Home = () => {
 };
 
 export default Home;
+

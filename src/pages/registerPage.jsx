@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
-import styles from "../styles/AuthModal.module.css";
-import { registerWithEmailAsync, loginWithGoogleAsync, clearError } from "../redux/auth/authSlice";
+import styles from "../styles/auth.module.css";
+import { registerWithEmailAsync, loginWithGoogleAsync, clearError } from "../redux/auth/authReducer";
 
 const RegisterModal = ({ isOpen, onClose, switchToLogin }) => {
   const dispatch = useDispatch();
