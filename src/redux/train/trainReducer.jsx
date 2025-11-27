@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { enrichTrainDataWithRoute } from "../../utils/trainDataHelper.js";
+import { enrichTrainDataWithRoute } from "../../utils/trainDataHelper.jsx";
 
 // const API_URL = 'https://mocki.io/v1/4099cc1c-9657-47c3-bb3f-10c34275e817'
 const dummyData = [
