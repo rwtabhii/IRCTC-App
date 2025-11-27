@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "../styles/ModifySearch.module.css";
+import styles from "../styles/modifySearch.module.css";
 import { FaExchangeAlt } from "react-icons/fa";
 import { setSearchParams, applyFilters } from "../redux/train/trainReducer";
 
