@@ -44,3 +44,38 @@
     background: rgb(246, 143, 46);
     /* Darker blue on hover */
 }
+
+
+@media (max-width: 760px) {
+
+    .searchForm {
+        margin-top: 42px;
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .searchForm h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    /* Form layout stays centered but more compact */
+    .searchForm form {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .searchForm input {
+        width: 100%;
+        max-width: 250px;
+        font-size: 0.9rem;
+        padding: 7px;
+    }
+
+    .searchForm button {
+        width: 100%;
+        max-width: 120px;
+        padding: 7px;
+        font-size: 0.9rem;
+    }
+}

@@ -115,3 +115,93 @@
     padding: 5px 10px;
     margin-right: 5px;
 }
+
+@media (max-width: 760px) {
+
+    /* Main container goes vertical */
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    /* Filter section moves to top, full width */
+    .filterSection {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    /* Train list takes full width */
+    .trainList {
+        width: 100%;
+    }
+
+    /* Train card becomes compact */
+    .trainCard {
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    /* Train header stack */
+    .trainHeader {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+
+    .trainName {
+        font-size: 1rem;
+    }
+
+    .trainSchedule {
+        font-size: 0.9rem;
+    }
+
+    /* Train details stack vertically */
+    .trainDetails {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .timeInfo {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .durationInfo {
+        font-size: 0.85rem;
+    }
+
+    /* Class info layout */
+    .classInfo {
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    /* Action buttons go vertical */
+    .actionButtons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bookNowButton,
+    .otherDatesButton {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    /* Availability buttons look clean on mobile */
+    .availableButton,
+    .waitlistButton {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}

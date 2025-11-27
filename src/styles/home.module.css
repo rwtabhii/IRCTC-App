@@ -147,3 +147,58 @@
         flex-direction: column;
     }
 }
+
+
+
+@media (max-width: 760px) {
+
+    .container {
+        margin-top: 41px;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .bookingForm {
+        width: 95%;
+        padding: 1.2rem;
+        border-radius: 6px;
+    }
+
+    .inputGroup {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .inputWrapper {
+        padding: 0.7rem;
+    }
+
+    .swapButton {
+        transform: rotate(90deg);
+        align-self: center;
+        margin: 0.5rem 0;
+    }
+
+    .checkboxGroup {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin: 1rem 0;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .searchButton,
+    .askDishaButton {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 1rem;
+    }
+
+    .input,
+    .select {
+        font-size: 0.95rem;
+    }
+}

@@ -25,6 +25,7 @@ export const createBooking = createAsyncThunk(
         ...bookingData,
       };
     } catch (error) {
+      console.log(error)
       return rejectWithValue(error.message);
     }
   }
@@ -49,6 +50,7 @@ export const fetchUserBookings = createAsyncThunk(
 
       return bookings;
     } catch (error) {
+      console.log(error)
       return rejectWithValue(error.message);
     }
   }
