@@ -10,7 +10,7 @@ import {
   applyFilters,
   clearError,
   fetchTrains,
-} from "../redux/train/trainReducer";
+} from "../redux/train/trainReducer.jsx";
 
 const TrainSearchResults = () => {
   const navigate = useNavigate();

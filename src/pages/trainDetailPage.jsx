@@ -7,7 +7,7 @@ import {
   fetchTrainDetails,
   clearSelectedTrain,
   clearError,
-} from "../redux/train/trainReducer";
+} from "../redux/train/trainReducer.jsx";
 
 const TrainDetails = () => {
   const { train_number } = useParams();

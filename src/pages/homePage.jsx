@@ -7,12 +7,12 @@ import {
   FaSuitcase,
   FaTrain,
 } from "react-icons/fa";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/home.module.css";
 import trainImage from "../assets/main.jpg";
 import {
   setSearchParams,
   clearAllFiltersAndSearch,
-} from "../redux/train/trainReducer";
+} from "../redux/train/trainReducer.jsx";
 
 const Home = () => {
   const navigate = useNavigate();

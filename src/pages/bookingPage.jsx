@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "../styles/BookingPage.module.css";
+import styles from "../styles/bookingPage.module.css";
 import {
   initializeBooking,
   updateSelectedClass,
@@ -11,7 +11,7 @@ import {
   updateContactInfo,
   createBooking,
   clearError,
-} from "../redux/booking/bookingReducer";
+} from "../redux/booking/bookingReducer.jsx";
 
 function BookingPage() {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "../styles/BookingConfirmationPage.module.css";
+import styles from "../styles/bookingConfirmationPage.module.css";
 
 function BookingConfirmation() {
   const location = useLocation();
