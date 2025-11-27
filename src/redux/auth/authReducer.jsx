@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginWithEmail, loginWithGoogle, logout, registerWithEmail } from "../../api/authApi"
+import { loginWithEmail, loginWithGoogle, logout, registerWithEmail } from "../../api/authApi.js"
 
 // Async thunks for authentication
 export const loginWithEmailAsync = createAsyncThunk(

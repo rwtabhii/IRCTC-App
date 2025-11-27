@@ -7,7 +7,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../../config/firebaseinit";
+import { db } from "../../config/firebaseInit.js";
 
 // Async thunk for creating a booking
 export const createBooking = createAsyncThunk(
