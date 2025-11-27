@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "../styles/Navbar.module.css";
+import styles from "../styles/navbar.module.css";
 import { FaBell, FaQuestionCircle, FaHome } from "react-icons/fa";
 import LoginModal from "../pages/loginPage";
 import RegisterModal from "../pages/registerPage";
