@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserBookings } from '../redux/booking/bookingReducer.jsx';
 import { Link } from 'react-router-dom';
-import styles from '../styles/myBookingPage.module.css';
+import styles from '../styles/mybookingPage.module.css';
 
 const MyBookings = () => {
   const dispatch = useDispatch();

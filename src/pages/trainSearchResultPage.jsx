@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import styles from "../styles/trainSearchResultPage.module.css";
-import ModifySearch from "../components/modifySearch";
+import ModifySearch from "../components/modifySearch.jsx";
 import {
   setSearchParams,
   toggleFilter,
