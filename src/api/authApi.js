@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth,googleProvider } from "../config/firebaseinit";
+import { auth,googleProvider } from "../config/firebaseInit.js";
 
 // Register with email/password
 export const registerWithEmail = async (email, password, fullName) => {
