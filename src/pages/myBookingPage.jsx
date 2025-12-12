@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserBookings } from '../redux/booking/bookingReducer.jsx';
 import { Link } from 'react-router-dom';
 import styles from '../styles/mybookingPage.module.css';
+import { ClipLoader } from 'react-spinners';
 
 const MyBookings = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,12 @@ const MyBookings = () => {
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
-        <div className={styles.spinner}></div>
-        <p>Loading your bookings...</p>
+        <ClipLoader
+        color="blue"
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
       </div>
     );
   }

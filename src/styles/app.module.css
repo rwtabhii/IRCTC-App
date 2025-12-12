@@ -3,7 +3,11 @@
     display: flex;
     flex-direction: column;
 }
-
+.loadingCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .mainContent {
     flex: 1;
     padding-top: 60px;

@@ -19,6 +19,7 @@ import LoginModal from "./pages/loginPage";
 import styles from "./styles/app.module.css";
 import ProtectedRoute from "./components/protectedRoutes";
 import { useEffect } from "react";
+import { ClipLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthState } from "./redux/auth/authReducer";
 import { observeAuthState } from "./api/authApi";
@@ -39,7 +40,7 @@ const RouteContentManager = () => {
         />
         <Route path="/train-search" element={<TrainSearchResults />} />
         <Route path="/train-details/:train_number" element={<TrainDetails />} />
-        <Route path="/booking-confirmation" element={<BookingConfirmation/>} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         <Route
           path="/booking"
           element={
@@ -48,13 +49,13 @@ const RouteContentManager = () => {
             </ProtectedRoute>
           }
         />
-        <Route 
-          path="/my-bookings" 
+        <Route
+          path="/my-bookings"
           element={
             <ProtectedRoute>
               <MyBookings />
             </ProtectedRoute>
-          } 
+          }
         />
         <Route path="/contact" element={<ContactPage />} />
         <Route
@@ -63,8 +64,8 @@ const RouteContentManager = () => {
             <LoginModal
               isOpen={true}
               onClose={() => window.history.back()}
-              onLogin={() => {}}
-              switchToRegister={() => {}}
+              onLogin={() => { }}
+              switchToRegister={() => { }}
             />
           }
         />
@@ -84,7 +85,21 @@ function App() {
   }, [dispatch]);
 
   if (!isInitialized) {
-    return <>Loading....</>;
+    return <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <ClipLoader
+        color="blue"
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+    </div>
   }
 
   return (

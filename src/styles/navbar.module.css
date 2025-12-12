@@ -32,6 +32,7 @@
     cursor: pointer;
     color: #ffffff;
     transition: color 0.2s ease;
+    height: 27px;
 }
 
 .homeIcon:hover {

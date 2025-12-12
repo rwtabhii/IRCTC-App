@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/navbar.module.css";
+import trainImage from "../../src/assets/trainImage.png"
 import { FaBell, FaQuestionCircle, FaHome } from "react-icons/fa";
 import LoginModal from "../pages/loginPage";
 import RegisterModal from "../pages/registerPage";
@@ -43,11 +44,7 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         {/* Logo & Home Icon */}
         <div className={styles.logoContainer}>
-          <FaHome
-            className={styles.homeIcon}
-            onClick={() => navigate("/")}
-            title="Home"
-          />
+          <img src={trainImage} alt="home" className={styles.homeIcon} onClick={() => navigate("/")}/>
           <div className={styles.logo}>IRCTC</div>
         </div>
 
