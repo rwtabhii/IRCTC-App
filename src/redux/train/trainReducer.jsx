@@ -4,76 +4,98 @@ import { enrichTrainDataWithRoute } from "../../utils/trainDataHelper.jsx";
 // const API_URL = 'https://mocki.io/v1/4099cc1c-9657-47c3-bb3f-10c34275e817'
 const dummyData = [
   {
-    "train_number": "12345",
-    "train_name": "Rajdhani Express",
-    "departure_time": "06:00",
-    "arrival_time": "18:00",
-    "source": "Delhi",
-    "destination": "Mumbai",
-    "days_of_operation": ["Mon","Wed","Fri"],
-    "price": {"1A":3500,"2A":2200,"3A":1500}
+    train_number: "12345",
+    train_name: "Rajdhani Express",
+    departure_time: "06:00",
+    arrival_time: "18:00",
+    duration: "12h 0m",
+    days_of_operation: ["Mon", "Wed", "Fri"],
+    route: [
+      { station_name: "Delhi", arrival_time: "06:00", departure_time: "06:05" },
+      { station_name: "Mumbai", arrival_time: "18:00", departure_time: "18:05" }
+    ],
+    price: { "1A": 3500, "2A": 2200, "3A": 1500 }
   },
   {
-    "train_number": "54321",
-    "train_name": "Shatabdi Express",
-    "departure_time": "08:30",
-    "arrival_time": "16:30",
-    "source": "Delhi",
-    "destination": "Chandigarh",
-    "days_of_operation": ["Tue","Thu","Sat"],
-    "price": {"CC":1200,"2S":600}
+    train_number: "54321",
+    train_name: "Shatabdi Express",
+    departure_time: "08:30",
+    arrival_time: "16:30",
+    duration: "8h 0m",
+    days_of_operation: ["Tue", "Thu", "Sat"],
+    route: [
+      { station_name: "Delhi", arrival_time: "08:30", departure_time: "08:35" },
+      { station_name: "Chandigarh", arrival_time: "16:30", departure_time: "16:35" }
+    ],
+    price: { "CC": 1200, "2S": 600 }
   },
   {
-    "train_number": "67890",
-    "train_name": "Special Superfast",
-    "departure_time": "22:00",
-    "arrival_time": "06:00",
-    "source": "Mumbai",
-    "destination": "Chennai",
-    "days_of_operation": "Daily",
-    "price": {"1A":4000,"2A":2500,"3A":1700,"SL":800}
+    train_number: "67890",
+    train_name: "Special Superfast",
+    departure_time: "22:00",
+    arrival_time: "06:00",
+    duration: "8h 0m",
+    days_of_operation: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], // Daily
+    route: [
+      { station_name: "Mumbai", arrival_time: "22:00", departure_time: "22:05" },
+      { station_name: "Chennai", arrival_time: "06:00", departure_time: "06:05" }
+    ],
+    price: { "1A": 4000, "2A": 2500, "3A": 1700, "SL": 800 }
   },
   {
-    "train_number": "11223",
-    "train_name": "Duronto Express",
-    "departure_time": "19:00",
-    "arrival_time": "07:00",
-    "source": "Kolkata",
-    "destination": "Mumbai",
-    "days_of_operation": ["Mon","Thu"],
-    "price": {"1A":3800,"2A":2300,"3A":1600}
+    train_number: "11223",
+    train_name: "Duronto Express",
+    departure_time: "19:00",
+    arrival_time: "07:00",
+    duration: "12h 0m",
+    days_of_operation: ["Mon", "Thu"],
+    route: [
+      { station_name: "Kolkata", arrival_time: "19:00", departure_time: "19:05" },
+      { station_name: "Mumbai", arrival_time: "07:00", departure_time: "07:05" }
+    ],
+    price: { "1A": 3800, "2A": 2300, "3A": 1600 }
   },
   {
-    "train_number": "33445",
-    "train_name": "Garib Rath",
-    "departure_time": "05:30",
-    "arrival_time": "21:30",
-    "source": "Delhi",
-    "destination": "Patna",
-    "days_of_operation": ["Tue","Fri","Sun"],
-    "price": {"3A":1400,"SL":500}
+    train_number: "33445",
+    train_name: "Garib Rath",
+    departure_time: "05:30",
+    arrival_time: "21:30",
+    duration: "16h 0m",
+    days_of_operation: ["Tue", "Fri", "Sun"],
+    route: [
+      { station_name: "Delhi", arrival_time: "05:30", departure_time: "05:35" },
+      { station_name: "Patna", arrival_time: "21:30", departure_time: "21:35" }
+    ],
+    price: { "3A": 1400, "SL": 500 }
   },
   {
-    "train_number": "55667",
-    "train_name": "Intercity Express",
-    "departure_time": "07:15",
-    "arrival_time": "12:30",
-    "source": "Bangalore",
-    "destination": "Mysore",
-    "days_of_operation": "Daily",
-    "price": {"CC":800,"2S":300}
+    train_number: "55667",
+    train_name: "Intercity Express",
+    departure_time: "07:15",
+    arrival_time: "12:30",
+    duration: "5h 15m",
+    days_of_operation: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], // Daily
+    route: [
+      { station_name: "Bangalore", arrival_time: "07:15", departure_time: "07:20" },
+      { station_name: "Mysore", arrival_time: "12:30", departure_time: "12:35" }
+    ],
+    price: { "CC": 800, "2S": 300 }
   },
   {
-    "train_number": "77889",
-    "train_name": "Tejas Express",
-    "departure_time": "06:45",
-    "arrival_time": "13:30",
-    "source": "Mumbai",
-    "destination": "Goa",
-    "days_of_operation": ["Mon","Wed","Sat"],
-    "price": {"CC":1500,"2S":700}
+    train_number: "77889",
+    train_name: "Tejas Express",
+    departure_time: "06:45",
+    arrival_time: "13:30",
+    duration: "6h 45m",
+    days_of_operation: ["Mon", "Wed", "Sat"],
+    route: [
+      { station_name: "Mumbai", arrival_time: "06:45", departure_time: "06:50" },
+      { station_name: "Goa", arrival_time: "13:30", departure_time: "13:35" }
+    ],
+    price: { "CC": 1500, "2S": 700 }
   }
-]
+];
+
 
 
 export const fetchTrains = createAsyncThunk(
@@ -99,17 +121,20 @@ export const fetchTrainDetails = createAsyncThunk(
   "trains/fetchTrainDetails",
   async (trainNumber, { rejectWithValue }) => {
     try {
-      const response = await fetch(API_URL);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      const train = data.data.find((t) => t.train_number === trainNumber);
-      if (!train) {
-        throw new Error("Train not found");
-      }
+      // const response = await fetch(API_URL);
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error! status: ${response.status}`);
+      // }
+      // const data = await response.json();
+      // const train = data.data.find((t) => t.train_number === trainNumber);
+      // if (!train) {
+      //   throw new Error("Train not found");
+      // }
       // Enrich train data with route field
-      return enrichTrainDataWithRoute(train);
+      // return enrichTrainDataWithRoute(train);
+     const trainData = dummyData.find((data) => data.train_number === trainNumber);
+return trainData;
+
     } catch (error) {
       return rejectWithValue(error.message);
     }

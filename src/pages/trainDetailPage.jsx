@@ -114,7 +114,7 @@ const TrainDetails = () => {
       </div>
     );
   }
-
+console.log(trainDetails)
   // Get source and destination from route array
   const source = trainDetails.route[0];
   const destination = trainDetails.route[trainDetails.route.length - 1];
