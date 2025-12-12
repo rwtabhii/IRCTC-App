@@ -3,7 +3,6 @@ import { FaTrain } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/trainDetailPage.module.css";
-import { ClipLoader } from "react-spinners";
 import {
   fetchTrainDetails,
   clearSelectedTrain,
@@ -83,12 +82,7 @@ const TrainDetails = () => {
   if (loading) {
     return (
       <div className={styles.container}>
-         <ClipLoader
-                 color="blue"
-                 size={50}
-                 aria-label="Loading Spinner"
-                 data-testid="loader"
-               />
+      loading...
       </div>
     );
   }

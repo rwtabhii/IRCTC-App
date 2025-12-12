@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "../styles/bookingPage.module.css";
-import { ClipLoader } from "react-spinners";
 import {
   initializeBooking,
   updateSelectedClass,
@@ -181,12 +180,6 @@ function BookingPage() {
     return (
       <div className={styles.container}>
         <h2>Processing Booking...</h2>
-         <ClipLoader
-                 color="blue"
-                 size={50}
-                 aria-label="Loading Spinner"
-                 data-testid="loader"
-               />
       </div>
     );
   }
