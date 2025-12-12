@@ -19,6 +19,7 @@ import LoginModal from "./pages/loginPage";
 import styles from "./styles/app.module.css";
 import ProtectedRoute from "./components/protectedRoutes";
 import { useEffect } from "react";
+import { ClipLoader } from "react-spinners";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthState } from "./redux/auth/authReducer";
 import { observeAuthState } from "./api/authApi";
@@ -84,8 +85,20 @@ function App() {
   }, [dispatch]);
 
   if (!isInitialized) {
-    return <div>
-      loading...
+    return <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <ClipLoader
+        color="blue"
+        size={50}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </div>
   }
 
