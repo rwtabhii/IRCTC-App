@@ -14,5 +14,4 @@ const store = configureStore({
       serializableCheck: false,
     }),
 });
-
 export default store;
