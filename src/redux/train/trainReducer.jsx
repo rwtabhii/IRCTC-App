@@ -35,7 +35,7 @@ const dummyData = [
     departure_time: "22:00",
     arrival_time: "06:00",
     duration: "8h 0m",
-    days_of_operation: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], // Daily
+    days_of_operation: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], // Daily
     route: [
       { station_name: "Mumbai", arrival_time: "22:00", departure_time: "22:05" },
       { station_name: "Chennai", arrival_time: "06:00", departure_time: "06:05" }
@@ -74,7 +74,7 @@ const dummyData = [
     departure_time: "07:15",
     arrival_time: "12:30",
     duration: "5h 15m",
-    days_of_operation: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], // Daily
+    days_of_operation: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"], // Daily
     route: [
       { station_name: "Bangalore", arrival_time: "07:15", departure_time: "07:20" },
       { station_name: "Mysore", arrival_time: "12:30", departure_time: "12:35" }
@@ -132,8 +132,8 @@ export const fetchTrainDetails = createAsyncThunk(
       // }
       // Enrich train data with route field
       // return enrichTrainDataWithRoute(train);
-     const trainData = dummyData.find((data) => data.train_number === trainNumber);
-return trainData;
+      const trainData = dummyData.find((data) => data.train_number === trainNumber);
+      return trainData;
 
     } catch (error) {
       return rejectWithValue(error.message);
@@ -241,56 +241,128 @@ const trainSlice = createSlice({
     },
 
     // Apply filters to trains
+    // applyFilters: (state) => {
+    //   let filtered = [...state.trains];
+
+    //   // Filter by search parameters
+    //   if (state.searchParams.from && state.searchParams.to) {
+    //     filtered = filtered.filter(
+    //       (train) =>
+    //         train.source
+    //           .toLowerCase()
+    //           .includes(state.searchParams.from.toLowerCase()) &&
+    //         train.destination
+    //           .toLowerCase()
+    //           .includes(state.searchParams.to.toLowerCase())
+    //     );
+    //   }
+
+    //   // Filter by travel class from search params
+    //   if (
+    //     state.searchParams.travelClass &&
+    //     state.searchParams.travelClass !== "All Classes"
+    //   ) {
+    //     filtered = filtered.filter((train) => {
+    //       if (!train.price) return false;
+    //       const classMap = {
+    //         "1A": "AC First Class",
+    //         "2A": "AC 2 Tier",
+    //         "3A": "AC 3 Tier",
+    //         SL: "Sleeper",
+    //       };
+    //       const classDisplayName =
+    //         classMap[state.searchParams.travelClass] ||
+    //         state.searchParams.travelClass;
+    //       return Object.keys(train.price).includes(classDisplayName);
+    //     });
+    //   }
+
+    //   // Filter by travel class checkboxes
+    //   const activeClassFilters = Object.keys(state.filters.travelClass).filter(
+    //     (key) => state.filters.travelClass[key]
+    //   );
+    //   if (activeClassFilters.length > 0) {
+    //     filtered = filtered.filter((train) => {
+    //       if (!train.price) return false;
+    //       return activeClassFilters.some((cls) =>
+    //         Object.keys(train.price).includes(cls)
+    //       );
+    //     });
+    //   }
+
+    //   // Filter by train type checkboxes
+    //   const activeTypeFilters = Object.keys(state.filters.trainType).filter(
+    //     (key) => state.filters.trainType[key]
+    //   );
+    //   if (activeTypeFilters.length > 0) {
+    //     filtered = filtered.filter((train) =>
+    //       activeTypeFilters.some((type) => train.train_name.includes(type))
+    //     );
+    //   }
+
+    //   // Filter by departure time checkboxes
+    //   const activeTimeFilters = Object.keys(state.filters.departureTime).filter(
+    //     (key) => state.filters.departureTime[key]
+    //   );
+    //   if (activeTimeFilters.length > 0) {
+    //     filtered = filtered.filter((train) => {
+    //       const departureHour = parseInt(train.departure_time.split(":")[0]);
+    //       return activeTimeFilters.some((timeRange) => {
+    //         if (timeRange === "00:00 - 06:00") {
+    //           return departureHour >= 0 && departureHour < 6;
+    //         } else if (timeRange === "06:00 - 12:00") {
+    //           return departureHour >= 6 && departureHour < 12;
+    //         } else if (timeRange === "12:00 - 18:00") {
+    //           return departureHour >= 12 && departureHour < 18;
+    //         } else if (timeRange === "18:00 - 24:00") {
+    //           return departureHour >= 18 && departureHour < 24;
+    //         }
+    //         return false;
+    //       });
+    //     });
+    //   }
+
+    //   state.filteredTrains = filtered;
+    // },
     applyFilters: (state) => {
       let filtered = [...state.trains];
 
-      // Filter by search parameters
+      // 1. Filter by search parameters (from & to)
       if (state.searchParams.from && state.searchParams.to) {
         filtered = filtered.filter(
           (train) =>
-            train.source
+            train.route[0].station_name
               .toLowerCase()
               .includes(state.searchParams.from.toLowerCase()) &&
-            train.destination
+            train.route[train.route.length - 1].station_name
               .toLowerCase()
               .includes(state.searchParams.to.toLowerCase())
         );
       }
 
-      // Filter by travel class from search params
+      // 2. Filter by travel class from searchParams
       if (
         state.searchParams.travelClass &&
         state.searchParams.travelClass !== "All Classes"
       ) {
         filtered = filtered.filter((train) => {
           if (!train.price) return false;
-          const classMap = {
-            "1A": "AC First Class",
-            "2A": "AC 2 Tier",
-            "3A": "AC 3 Tier",
-            SL: "Sleeper",
-          };
-          const classDisplayName =
-            classMap[state.searchParams.travelClass] ||
-            state.searchParams.travelClass;
-          return Object.keys(train.price).includes(classDisplayName);
+          return Object.keys(train.price).includes(state.searchParams.travelClass);
         });
       }
 
-      // Filter by travel class checkboxes
+      // 3. Filter by travel class checkboxes
       const activeClassFilters = Object.keys(state.filters.travelClass).filter(
         (key) => state.filters.travelClass[key]
       );
       if (activeClassFilters.length > 0) {
         filtered = filtered.filter((train) => {
           if (!train.price) return false;
-          return activeClassFilters.some((cls) =>
-            Object.keys(train.price).includes(cls)
-          );
+          return activeClassFilters.some((cls) => Object.keys(train.price).includes(cls));
         });
       }
 
-      // Filter by train type checkboxes
+      // 4. Filter by train type checkboxes
       const activeTypeFilters = Object.keys(state.filters.trainType).filter(
         (key) => state.filters.trainType[key]
       );
@@ -300,30 +372,27 @@ const trainSlice = createSlice({
         );
       }
 
-      // Filter by departure time checkboxes
+      // 5. Filter by departure time checkboxes
       const activeTimeFilters = Object.keys(state.filters.departureTime).filter(
         (key) => state.filters.departureTime[key]
       );
       if (activeTimeFilters.length > 0) {
         filtered = filtered.filter((train) => {
-          const departureHour = parseInt(train.departure_time.split(":")[0]);
+          const departureHour = parseInt(train.departure_time.split(":")[0], 10);
           return activeTimeFilters.some((timeRange) => {
-            if (timeRange === "00:00 - 06:00") {
-              return departureHour >= 0 && departureHour < 6;
-            } else if (timeRange === "06:00 - 12:00") {
-              return departureHour >= 6 && departureHour < 12;
-            } else if (timeRange === "12:00 - 18:00") {
-              return departureHour >= 12 && departureHour < 18;
-            } else if (timeRange === "18:00 - 24:00") {
-              return departureHour >= 18 && departureHour < 24;
-            }
+            if (timeRange === "00:00 - 06:00") return departureHour >= 0 && departureHour < 6;
+            if (timeRange === "06:00 - 12:00") return departureHour >= 6 && departureHour < 12;
+            if (timeRange === "12:00 - 18:00") return departureHour >= 12 && departureHour < 18;
+            if (timeRange === "18:00 - 24:00") return departureHour >= 18 && departureHour < 24;
             return false;
           });
         });
       }
 
+      // Save filtered results in state
       state.filteredTrains = filtered;
     },
+
 
     // Clear errors
     clearError: (state) => {
@@ -336,28 +405,28 @@ const trainSlice = createSlice({
     },
   },
 
-  extraReducers: (builder)=>{
+  extraReducers: (builder) => {
     builder
-    .addCase(fetchTrains.pending, (state, action)=>{
-      state.loading = true
-    })
-    .addCase(fetchTrains.fulfilled, (state, action)=>{
-      state.trains = action.payload
-      state.loading = false
-    })
+      .addCase(fetchTrains.pending, (state, action) => {
+        state.loading = true
+      })
+      .addCase(fetchTrains.fulfilled, (state, action) => {
+        state.trains = action.payload
+        state.loading = false
+      })
 
 
-    .addCase(fetchTrainDetails.pending, (state, action)=>{
-      state.loading = true
-    })
-    .addCase(fetchTrainDetails.fulfilled, (state, action)=>{
-      state.loading = false
-      state.selectedTrain = action.payload
-    })
-    .addCase(fetchTrainDetails.rejected, (state, action)=>{
-      state.loading = false;
-      state.error = action.payload
-    })
+      .addCase(fetchTrainDetails.pending, (state, action) => {
+        state.loading = true
+      })
+      .addCase(fetchTrainDetails.fulfilled, (state, action) => {
+        state.loading = false
+        state.selectedTrain = action.payload
+      })
+      .addCase(fetchTrainDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+      })
   }
 });
 
